@@ -1,13 +1,15 @@
 <%#
-	
-	ifit is a clean HTML5 theme for LuCI. It is based on luci-theme-material.
+	FruitBingo is a clean HTML5 theme for LuCI. It is based on luci-theme-material.
 
-	luci-theme-ifit
-	
+	luci-theme-fruitbingo
+	Copyright 2021 Justin Lee <JustinDellAdam@live.com>
+
+	luci-theme-infinityfreedom
+	Copyright 2020-2021 Richard Yu <xiaoqingfengatgm@gmail.com>
 
 	Have a bug? Please create an issue here on GitHub!
-	https://github.com/kenzok8/luci-theme-ifit/issues
-	
+	https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom/issues
+
 	luci-theme-material:
 	Copyright 2015 Lutty Yang
 
@@ -17,8 +19,6 @@
 	Copyright 2012 David Menting <david@nut-bolt.nl>
 	MUI:
 	https://github.com/muicss/mui
-
-	Licensed to the public under the Apache License 2.0
 -%>
 
 <%
@@ -199,13 +199,18 @@
 	<meta name="full-screen" content="yes">
 	<meta name="x5-page-mode" content="app">
 	<meta name="browsermode" content="application">
-	<meta name="theme-color" content="#0099CC">
 	<meta name="msapplication-tap-highlight" content="no">
 	<meta name="msapplication-TileColor" content="#0099CC">
 
-	<meta name="application-name" content="<%=striptags( (boardinfo.hostname or "?") ) %> - LuCI">
-	<meta name="apple-mobile-web-app-title" content="<%=striptags( (boardinfo.hostname or "?") ) %> - LuCI">
+	<meta name="application-name" content='<%=striptags( (boardinfo.hostname or "?") ) %> - LuCI'>
+	<meta name="apple-mobile-web-app-title" content='<%=striptags( (boardinfo.hostname or "?") ) %> - LuCI'>
 	<meta name="msapplication-TileImage" content="<%=media%>/logo.png"/>
+	<meta name="theme-color"
+		  content="#516478"
+		  media="(prefers-color-scheme: light)">
+	<meta name="theme-color"
+		  content="#07223E"
+		  media="(prefers-color-scheme: dark)">
 	<link rel="icon" href="<%=media%>/logo.png" sizes="144x144">
 	<link rel="apple-touch-icon-precomposed" href="<%=media%>/logo.png" sizes="144x144">
 
@@ -224,7 +229,7 @@
 <header>
 	<div class="container">
 		<span class="showSide"></span>
-		<a class="brand" href="#"><%="OpenWrt"%></a>
+		<a class="brand" href="#"><%=boardinfo.hostname or "?"%></a>
 		<div class="pull-right">
 			<% render_changes() %>
 			<span id="xhr_poll_status" style="display:none" onclick="XHR.running() ? XHR.halt() : XHR.run()">
@@ -235,18 +240,18 @@
 	</div>
 </header>
 	<script>
-	var brandurl = '/luci-static/ifit/images/brand.png';
+	let brandurl = '/luci-static/fruitbingo/images/brand.png';
 	$.ajax({
         url : brandurl,
         type : 'HEAD',
         error : function() {
-			var brand = $("body > header > div > a.brand");
+			let brand = $("body > header > div > a.brand");
 			brand.addClass('brandMark');
         },
         success : function() {
-			var brandContainer = $("header > .container > .brand");
+			let brandContainer = $("header > .container > .brand");
 			brandContainer.addClass("brandWithBackground");
-			var brand = $("body > header > div > a.brand");
+			let brand = $("body > header > div > a.brand");
 			brand.html('');
         }
     });
@@ -264,7 +269,7 @@
 					<div class="alert-message warning">
 						<h4><%:No password set!%></h4>
 						<p><%:There is no password set on this router. Please configure a root password to protect the web interface and enable SSH.%></p>
-						<div class="right"><a class="btn" href="<%=url("admin/system/admin")%>"><%:Go to password configuration...%></a></div>
+						<div class="right"><a class="btn" href='<%=url("admin/system/admin")%>'><%:Go to password configuration...%></a></div>
 					</div>
 				<%- end -%>
 

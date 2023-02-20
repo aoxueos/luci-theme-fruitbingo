@@ -1,16 +1,16 @@
-# LuCI Theme Infinity Freedom
-# 
+# LuCI Theme Fruit Bingo
+# Copyright 2021 Justin Lee <JustinDellAdam@live.com>
 #
 # Licensed under the Apache License v2.0
 # http://www.apache.org/licenses/LICENSE-2.0
 
 include $(TOPDIR)/rules.mk
 
-THEME_NAME:=ifit
-THEME_TITLE:=ifit
+THEME_NAME:=fruitbingo
+THEME_TITLE:=FruitBingo
 
 PKG_NAME:=luci-theme-$(THEME_NAME)
-PKG_VERSION:=1.5.2
+PKG_VERSION:=2.2.20221020
 
 PKG_RELEASE:=1
 
@@ -21,8 +21,8 @@ define Package/luci-theme-$(THEME_NAME)
   CATEGORY:=LuCI
   SUBMENU:=4. Themes
   DEPENDS:=+libc
-  TITLE:=Ifit Theme
-  URL:=https://github.com/kenzok8/luci-theme-ifit
+  TITLE:=Fruit Bingo Theme
+  URL:=https://github.com/realJustinLee/luci-theme-fruitbingo
   PKGARCH:=all
 endef
 
